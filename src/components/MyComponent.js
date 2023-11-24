@@ -31,16 +31,11 @@ class MyComponent extends React.Component{
     render(){
         return(
           <div>
-            <DisplayInfo 
+            
+          <UserInfo></UserInfo>
+          <DisplayInfo 
                 listUsers={this.state.listUsers}
             />
-            <form>
-              <UserInfo 
-                name={this.state.name}
-              />
-              <button type="submit">Submit!</button>
-            </form>
-
           </div>
             
         )

@@ -9,10 +9,15 @@ class UserInfo extends React.Component{
   
     render(){
         return (
-            <div>
-                <label></label>
+            <form >
+                <label>your name</label>
                 <input type="text" onChange={(event)=> {this.handleOnChange(event.target.value)}}/>
-            </div>
+                <br/><label>your age</label>
+                <input type="text" onChange={(event)=> {this.handleOnChange(event.target.value)}}/>
+                <br/><label>your address</label>
+                <input type="text" onChange={(event)=> {this.handleOnChange(event.target.value)}}/>
+                <br/><button type="submit">submit!</button>
+            </form>
 
         )
     }
