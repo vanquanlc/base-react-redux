@@ -1,6 +1,6 @@
 
 import React from "react";
-import UserInfo from "./UserInfo";
+import AddUserInfo from "./AddUserInfo";
 import DisplayInfo from "./DisplayInfo";
 
 
@@ -28,13 +28,30 @@ class MyComponent extends React.Component{
         }
       ]
     } 
+
+    handleAddUser = (userObj) => {
+      this.setState({
+        listUsers: [ userObj, ...this.state.listUsers]
+      })
+    }
+
+    handleDeleteUser = (userID) =>{
+      let listUsersClone = [...this.state.listUsers];
+      listUsersClone = listUsersClone.filter(item => item.id != userID);
+      this.setState({
+        listUsers: listUsersClone
+      })
+    }
     render(){
         return(
           <div>
             
-          <UserInfo></UserInfo>
+          <AddUserInfo 
+            handleAddUser = {this.handleAddUser}
+          />
           <DisplayInfo 
                 listUsers={this.state.listUsers}
+                handleDeleteUser={this.handleDeleteUser}
             />
           </div>
             

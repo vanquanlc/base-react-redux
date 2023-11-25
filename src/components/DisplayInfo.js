@@ -1,4 +1,6 @@
 import React from "react";
+import './DisplayInfo.scss';
+import logo from './../logo.svg';
 
 class DisplayInfo extends React.Component{
     state = {
@@ -12,7 +14,7 @@ class DisplayInfo extends React.Component{
     render(){
         const {listUsers} = this.props;
         return (
-         <div>
+         <div className="display-infor-container">
             <button 
                 onClick={()=>{this.handleShowHideListUser()}}
             >
@@ -26,12 +28,12 @@ class DisplayInfo extends React.Component{
                             <span>My name is {user.name}</span><br/>
                             <span>My age is {user.age}</span><br/>
                             <span>My address is {user.address}</span><br/>
+                            <button onClick={()=> this.props.handleDeleteUser(user.id)}>Delete</button><br/>
                             <hr/>
                         </div>
                     )
                 })}
             </div>}
-            
          </div>
         )
     }
