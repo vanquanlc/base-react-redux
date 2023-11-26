@@ -42,6 +42,15 @@ class MyComponent extends React.Component{
         listUsers: listUsersClone
       })
     }
+
+    componentDidMount(){
+      console.log("component did mounth");
+    }
+    componentDidUpdate(prevProps, prevStates){
+      console.log(prevStates);
+      console.log("updating...");
+      console.log(this.state);
+    }
     render(){
         return(
           <div>
