@@ -4,12 +4,45 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Admin from './components/Admin/Admin';
+import User from './components/User/User';
+import ErrorPage from './components/Error/ErrorPage';
+import HomePage from './components/home/HomePage';
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "admin",
+        element: <Admin />,
+      },
+      {
+        path: "users",
+        element: <User/>
+      },
+      {
+        index: true,
+        element: <HomePage/>
+      }
+    ],
+  },
+
+]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     {/* <React.StrictMode> */}
-      <App />
+    <RouterProvider router={router}/>
     {/* </React.StrictMode> */}
   </Provider>
 );
