@@ -14,6 +14,8 @@ import Admin from './components/Admin/Admin';
 import User from './components/User/User';
 import ErrorPage from './components/Error/ErrorPage';
 import HomePage from './components/home/HomePage';
+import DashBoard from './components/Admin/adminContent/DashBoard';
+import ManageUsers from './components/Admin/adminContent/ManageUsers';
 
 
 const router = createBrowserRouter([
@@ -23,10 +25,6 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "admin",
-        element: <Admin />,
-      },
-      {
         path: "users",
         element: <User/>
       },
@@ -35,6 +33,20 @@ const router = createBrowserRouter([
         element: <HomePage/>
       }
     ],
+  },
+  {
+    path: "admin",
+    element: <Admin />,
+    children: [
+      {
+        index: true,
+        element: <DashBoard/>
+      },
+      {
+        path: "/admin/manage-users",
+        element: <ManageUsers/>
+      }
+    ]
   },
 
 ]);

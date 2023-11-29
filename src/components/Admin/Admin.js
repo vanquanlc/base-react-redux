@@ -1,8 +1,25 @@
-
+import SideBarAdmin from "./SideBarAdmin";
+import './AdminPage.scss'
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
 const Admin = () => {
+    const [collapsed, setcollapsed] = useState(false);
+
     return(
-        <div>Amin components</div>
+        <div className="admin-contaier">
+            <div className="admin-sidebar"> 
+                <SideBarAdmin setcollapsed={setcollapsed} collapsed={collapsed}/>
+            </div>
+            <div className="admin-content-container">
+                <div className="admin-header">
+                    admin header
+                </div>
+                <div className="admin-content">
+                    <Outlet/>
+                </div>
+            </div>
+        </div>
     )
 }
 

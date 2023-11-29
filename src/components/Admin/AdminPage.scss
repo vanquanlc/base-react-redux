@@ -1,0 +1,24 @@
+@import '../../style/colors.scss';
+.admin-contaier{
+    display: flex;
+    .admin-sidebar{
+        height: 100vh;
+        .sidebar-btn{
+            color: $whiteColor;
+        }
+    }
+    .admin-content-container{
+        width: 100%;
+        .admin-header{
+            height: 40px;
+            border: 1px solid #ccc;
+            width: 100%;
+            line-height: 40px;
+            padding-left: 2em;
+        }
+        .admin-content{
+            padding-left: 2em;
+        }
+    }
+
+}

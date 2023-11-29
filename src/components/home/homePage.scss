@@ -1,0 +1,42 @@
+@import '../../style/colors.scss';
+
+.home-page-container{
+    max-width: 1200px;
+    margin: auto;
+    .video-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1rem;
+        .home-page__video{
+            width: 100%;
+            
+        }
+        .home-page__infor-video{
+            margin: auto 0;
+            text-align: left;
+            padding: 0 3rem;
+            color: $blackColor;
+            .infor-video__tittle{
+                font-size: 2em;
+                padding-right: 5em;
+            }
+            .infor-video__description{
+                font-size: 1em;
+                margin: 2em 0;
+            }
+            .infor-video__button{
+                height: 2em;
+                a{
+                    padding: 0.5em;
+                    background-color: $blackColor;
+                    color: $whiteColor;
+                    border-radius: 5px;
+                    text-align: center;
+                    line-height: 2em;
+
+                }
+            }
+        }
+
+    }
+}
