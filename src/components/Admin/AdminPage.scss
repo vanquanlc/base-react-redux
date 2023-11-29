@@ -18,6 +18,13 @@
         }
         .admin-content{
             padding-left: 2em;
+
+            .btn-add-new-user{
+                display: flex;
+                gap: 5px;
+                align-items: center;
+                justify-content: center;
+            }
         }
     }
 
