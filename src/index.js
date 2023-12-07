@@ -16,6 +16,7 @@ import ErrorPage from './components/Error/ErrorPage';
 import HomePage from './components/home/HomePage';
 import DashBoard from './components/Admin/adminContent/DashBoard';
 import ManageUsers from './components/Admin/adminContent/ManageUsers';
+import Login from './components/Auth/Login';
 
 
 const router = createBrowserRouter([
@@ -47,7 +48,10 @@ const router = createBrowserRouter([
         element: <ManageUsers/>
       }
     ]
-  },
+  },{
+    path: "login",
+    element: <Login/>
+  }
 
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
