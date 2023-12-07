@@ -15,16 +15,32 @@
             width: 100%;
             line-height: 40px;
             padding-left: 2em;
+            
         }
         .admin-content{
-            padding-left: 2em;
+            padding: 0 2em;
+            
 
             .btn-add-new-user{
                 display: flex;
                 gap: 5px;
                 align-items: center;
                 justify-content: center;
+                margin: 2rem 0; 
             }
+            .table-user-container{
+                .table-user {
+                    .body-table-user {
+                        max-height: 300px;
+                        overflow-y: scroll;
+                    }
+                }
+                .paginate-list-user{
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+            
         }
     }
 

@@ -2,9 +2,7 @@
 import { useState } from "react";
 import { FaCirclePlus } from "react-icons/fa6";
 import { MdChangeCircle } from "react-icons/md";
-const ModalFormCreateUser = ({email, userName, password, role, image, previewImage, ...rest }) => {
-    console.log(previewImage);
-
+const ModalFormUpdateUser = ({email, userName, password, role, image, previewImage, ...rest }) => {
 
     const handleUploadedImg = (event) => {
         if (event.target && event.target.files && event.target.files[0]) {
@@ -13,7 +11,6 @@ const ModalFormCreateUser = ({email, userName, password, role, image, previewIma
             rest.setImage(event.target.files[0]);
         }
     }
-
 
     return(
         <form>
@@ -24,6 +21,8 @@ const ModalFormCreateUser = ({email, userName, password, role, image, previewIma
                     onChange={(event) => rest.setEmail(event.target.value)}  
                     type="email" 
                     className="form-control" 
+                    value={email} 
+                    disabled
                     placeholder="Email" 
 
                 />
@@ -33,6 +32,7 @@ const ModalFormCreateUser = ({email, userName, password, role, image, previewIma
                 <input 
                     onChange={(event) => rest.setUserName(event.target.value)} 
                     type="text" 
+                    value={userName}
                     className="form-control"  
                     placeholder="Your user name" 
                 />
@@ -44,6 +44,7 @@ const ModalFormCreateUser = ({email, userName, password, role, image, previewIma
                     type="password" 
                     className="form-control"  
                     placeholder="Password" 
+                    disabled
                     autoComplete="on"
                 />
             </div>
@@ -54,7 +55,7 @@ const ModalFormCreateUser = ({email, userName, password, role, image, previewIma
                 <select 
                     onChange={(event) => rest.setRole(event.target.value)} 
                     id="inputState"
-                    defaultValue='USER'
+                    value={role}
                     className="form-control"
                 >
                     <option  value="ADMIN">ADMIN</option>
@@ -94,4 +95,4 @@ const ModalFormCreateUser = ({email, userName, password, role, image, previewIma
     </form>
     )
 }
-export default ModalFormCreateUser;
+export default ModalFormUpdateUser;

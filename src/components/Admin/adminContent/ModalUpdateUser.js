@@ -1,22 +1,36 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './manageUser.scss'
-import ModalFormCreateUser from './ModalFormCreateUser';
-import { setUserService } from '../../../services/apiUserService';
+import { updateServiceUser } from '../../../services/apiUserService';
 import {toast} from 'react-toastify'
+import ModalFormUpdateUser from './ModalFormUpdateUser';
+import _, { set } from 'lodash';
 
-const ManageCreateUsers = ({show, setShow, setListUsers, listUsers}) => {
+const ModalUpdateUser = ({show, setShow, listUsers, setListUsers, dataUpdate, ...rest}) => {
 
   const handleClose = () => setShow(false);
-
-
   const [email, setEmail] = useState('');
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('USER');
   const [userImage, setImage] = useState('');
   const [previewImage, setPreviewImage] = useState('')
+  useEffect(()=>{
+    if(!_.isEmpty(dataUpdate)){
+      setEmail(dataUpdate.email);
+      setUserName(dataUpdate.username);
+      setRole(dataUpdate.role);
+      if (dataUpdate.image) {
+        setPreviewImage(`data:image/jpeg;base64,${dataUpdate.image}`)
+        
+      }else{
+        setPreviewImage('');
+      }
+
+    }
+    
+  }, [dataUpdate])
 
   const validateEmail = (email) => {
     return String(email)
@@ -31,7 +45,7 @@ const ManageCreateUsers = ({show, setShow, setListUsers, listUsers}) => {
   }
 
   const validateUsername = (username) =>  {
-    if (username !== null) {
+    if (!_.isEmpty(username)) {
       return true;
     }
   }
@@ -43,36 +57,31 @@ const ManageCreateUsers = ({show, setShow, setListUsers, listUsers}) => {
       toast.error('Email invalidate');
       return;
     }
-    if (!isValidatePassword) {
-      toast.error('Password must consist of 8 characters containing at least one uppercase letter, lowercase letter and number');
-      return;
-    }
+    // if (!isValidatePassword) {
+    //   toast.error('Password must consist of 8 characters containing at least one uppercase letter, lowercase letter and number');
+    //   return;
+    // }
     if(!isValidateUsername){
       toast.error('Username cannot be blank');
       return;
     }
 
-    const data = await setUserService(email, username, password, role, userImage);
+    const data = await updateServiceUser(dataUpdate.id, username, role, userImage);
     if(data && data.EC !== 0){
       toast.error(data.EM)
       return;
     }
     if(data && data.EC === 0){
-      setListUsers([data.DT, ...listUsers])
-      toast.success(data.EM)
+      handleClose();
+      toast.success(data.EM);
+      await rest.getAllUsers(rest.currentPage);
       return;
 
     }
   }
 
-
-
   return (
     <>
-      {/* <Button variant="primary" onClick={handleShow}>
-        Add new user
-      </Button> */}
-
       <Modal 
         show={show} 
         onHide={handleClose}
@@ -81,10 +90,10 @@ const ManageCreateUsers = ({show, setShow, setListUsers, listUsers}) => {
         className='modal-manage-user'
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add new user</Modal.Title>
+          <Modal.Title>Update new user</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ModalFormCreateUser 
+          <ModalFormUpdateUser
             email={email}
             userName={username}
             password={password}
@@ -112,4 +121,4 @@ const ManageCreateUsers = ({show, setShow, setListUsers, listUsers}) => {
   );
 }
 
-export default ManageCreateUsers;
+export default ModalUpdateUser;
