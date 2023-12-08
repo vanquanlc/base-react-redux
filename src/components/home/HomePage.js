@@ -1,4 +1,5 @@
 
+import { ToastContainer } from "react-toastify";
 import videoHome1 from "../../assets/video-homepage-1.webm";
 import videoHome2 from "../../assets/video-homepage-2.webm";
 import videoHome3 from "../../assets/video-homepage-3.webm";
@@ -58,8 +59,6 @@ const HomePage = () =>{
                     )
                 }
             })}
-
-
         </div>
     )
 }

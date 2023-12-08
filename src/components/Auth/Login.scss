@@ -19,11 +19,25 @@
             margin: auto;
             height: 70vh;
             text-align: center;
+            .login-content__heading{
+                text-decoration: none;
+                font-size: 2rem;
+                font-weight: 700;
+                color: $blackColor;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
             .form-group{
                 text-align: left;
                 margin: 1em 0 0 0;
                 label{
                     margin: 4px 0; 
+                }
+                input{
+                    height: 40px;
+                    padding-left: 10px ;
+                    border-radius: 5px;
+                    outline: none;
+                    border: 1px solid #ccc;
                 }
             }
             .forgot-password-container{
@@ -35,6 +49,9 @@
                 width: 100%;
                 background-color: $blackColor;
                 color: $whiteColor;
+                border-radius: 5px;
+                border: none;
+                padding: 4px;
             }
             .btn-by-stand-other{
                 width: 100%;

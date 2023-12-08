@@ -6,10 +6,8 @@ import { NavLink, useNavigate   } from 'react-router-dom';
 import "./Header.scss"
 const Header = () => {
   const navigate = useNavigate();
-  const handleLoginClick = () => {
-
-    navigate('/login')
-
+  const handleClickChangePage = (page) => {
+    navigate(page)
   }
   return (
     <Navbar expand="lg" className="bg-body-tertiary" id='header'>
@@ -23,13 +21,13 @@ const Header = () => {
             <NavLink className='nav-link' to="/admin">Admin</NavLink>
           </Nav>
 
-          <button onClick={()=> handleLoginClick()} className='btn-create-account btn-login'>Login</button>
-          <button className='btn-create-account btn-signup'>Sign up</button>
+          <button onClick={()=> handleClickChangePage('./login')} className='btn-create-account btn-login'>Login</button>
+          <button onClick={()=> handleClickChangePage('./signup')} className='btn-create-account btn-signup'>Sign up</button>
 
           {/* <NavDropdown title="Setting" id="basic-nav-dropdown">
-              <NavDropdown.Item>Login</NavDropdown.Item>
-              <NavDropdown.Item>Logout</NavDropdown.Item>
               <NavDropdown.Item>Profile</NavDropdown.Item>
+              <NavDropdown.Item>Your exam</NavDropdown.Item>
+              <NavDropdown.Item>Logout</NavDropdown.Item>
 
             </NavDropdown> */}
         </Navbar.Collapse>

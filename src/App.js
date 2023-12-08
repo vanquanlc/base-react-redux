@@ -12,7 +12,6 @@ const App = () => {
       <div className='main-container'>
         <Outlet/>
       </div>
-
     </div>
   );
 }
