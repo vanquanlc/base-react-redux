@@ -5,6 +5,8 @@ import { TfiMicrosoft } from "react-icons/tfi";
 import { useState } from "react";
 import { postUserLogin } from "../../services/apiAuth";
 import {  toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { USER_LOGIN_SUCCESS } from "../../redux/action/userAction";
 
 
 
@@ -13,6 +15,9 @@ const Login = ( ) => {
     const navigate = useNavigate();
     const [email , setEmail] = useState('');
     const [password , setPassword] = useState('');
+
+    const dispath = useDispatch();
+
 
     const handleClickChangePage = () => {
         navigate('../signup');
@@ -25,6 +30,10 @@ const Login = ( ) => {
             return;
         }
         if(data.EC === 0){
+            dispath({
+                type: USER_LOGIN_SUCCESS,
+                payload: data}
+            )
             navigate('/')
             toast.success(data.EM);
         }
