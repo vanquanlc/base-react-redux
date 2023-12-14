@@ -56,7 +56,6 @@ const SideBarAdmin = ({ image, collapsed, toggled, handleToggleSidebar, setcolla
                             dashboard
                             <Link to='/admin'/>
                         </MenuItem>
-                        <MenuItem icon={<FaGem />}> components </MenuItem>
                     </Menu>
                     <Menu iconShape="circle">
                         <SubMenu
@@ -68,7 +67,11 @@ const SideBarAdmin = ({ image, collapsed, toggled, handleToggleSidebar, setcolla
                                 Quản lý users
                                 <Link to="/admin/manage-users"/>
                             </MenuItem>
-                            <MenuItem>Quản lý bài quiz</MenuItem>
+                            <MenuItem>
+                                Quản lý bài quiz
+                                <Link to="/admin/manage-quizs"/>
+                            
+                            </MenuItem>
                             <MenuItem>Quản lý câu hỏi</MenuItem>
                         </SubMenu>
 

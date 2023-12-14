@@ -1,0 +1,15 @@
+.list-quiz-user-container{
+    display: flex;
+    gap: 4.1rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    flex-wrap: wrap;
+    height: 300px;
+    .card{
+        max-width: 250px;
+        .card-body{
+            position: absolute;
+            bottom: 0;
+        }
+    }
+}

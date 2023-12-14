@@ -23,27 +23,32 @@ const Header = () => {
   const handleClose = () => {
     setShowlogout(false)
   }
+
+  const handleClickBtnYourSetting = () => {
+    navigate('profileUser')
+  }
   const dispath = useDispatch();
   const isLogInSuccess = useSelector(state => state.user.isLogInSuccess);
   const account = useSelector(state => state.user.account);
+
   return (
     <>
     
     <Navbar expand="lg" className="bg-body-tertiary" id='header'>
       <Container>
-        <NavLink className='navbar-brand' to="/">React-Bootstrap</NavLink>
+        <NavLink className='navbar-brand' to="/">QUAN</NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavLink className='nav-link' to="/">Home</NavLink>
             <NavLink className='nav-link' to="/users">Users</NavLink>
-            <NavLink className='nav-link' to="/admin">Admin</NavLink>
+            {account.role === 'ADMIN' && <NavLink className='nav-link' to="/admin">Admin</NavLink>}
           </Nav>
           {
             isLogInSuccess
             ?
-              <NavDropdown title="Setting" id="basic-nav-dropdown">
-                <NavDropdown.Item>Profile</NavDropdown.Item>
+              <NavDropdown title={account.email} id="basic-nav-dropdown">
+                <NavDropdown.Item onClick={()=> handleClickBtnYourSetting()}>Your setting</NavDropdown.Item>
                 <NavDropdown.Item  onClick={() => setShowlogout(true)} >Logout</NavDropdown.Item>
   
               </NavDropdown>

@@ -13,6 +13,9 @@ import {
   import Login from './components/Auth/Login';
   import SignUp from './components/Auth/SignUp';
   import { ToastContainer } from 'react-toastify';
+import ProfileUser from "./components/User/ProfileUser";
+import ManageQuizs from "./components/Admin/ManageQuizz/ManageQuizs";
+import ListQuizUser from "./components/User/ListQuizUser";
   
   
   const router = createBrowserRouter([
@@ -23,7 +26,7 @@ import {
       children: [
         {
           path: "users",
-          element: <User/>
+          element: <ListQuizUser/>
         },
         {
           index: true,
@@ -42,6 +45,10 @@ import {
         {
           path: "/admin/manage-users",
           element: <ManageUsers/>
+        },
+        {
+          path: "/admin/manage-quizs",
+          element: <ManageQuizs/>
         }
       ]
     },{
@@ -52,6 +59,10 @@ import {
       path: "signup",
       element: <SignUp/>
     },
+    {
+      path: "profileUser",
+      element: <ProfileUser/>
+    }
   
   
   ]);
